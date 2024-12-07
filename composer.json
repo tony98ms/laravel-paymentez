@@ -1,0 +1,44 @@
+{
+    "name": "blubear/laravel-paymentez",
+    "description": "Libreria para conexión con pasarela de pagos Nuvem",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Blubear\\LaravelPaymentez\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anthony Medina",
+            "email": "tonym@blubear.io",
+            "homepage": "https://github.com/tony98ms",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "guzzlehttp/guzzle": "^7.4.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Blubear\\LaravelPaymentez\\LaravelPaymentezProvider"
+            ],
+            "aliases": {
+                "PaymentezCard": "Blubear\\LaravelPaymentez\\Facades\\PaymentezCard",
+                "PaymentezCharge": "Blubear\\LaravelPaymentez\\Facades\\PaymentezCharge",
+                "PaymentezCash": "Blubear\\LaravelPaymentez\\Facades\\PaymentezCash"
+            }
+        }
+    }
+}
