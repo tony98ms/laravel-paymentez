@@ -1,6 +1,6 @@
 {
     "name": "blubear/laravel-paymentez",
-    "description": "Libreria para conexión con pasarela de pagos Nuvem",
+    "description": "Libreria para conexión con pasarela de pagos Paymentez(Nuvei)",
     "type": "library",
     "license": "MIT",
     "autoload": {
