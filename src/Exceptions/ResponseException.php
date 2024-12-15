@@ -35,7 +35,7 @@ class ResponseException
             logger("Some of help: {$help}");
             logger("HTTP code: {$responseHttpCode}");
             logger("Raw API response: {$rawResponse}");
-            logger("Request: " . json_encode($request));
+            logger("Request: " . json_encode($request->data()));
             logger("Url: " . $request->url());
             logger("=========== // ERROR ON PAYMENTEZ API // ===========");
         }
