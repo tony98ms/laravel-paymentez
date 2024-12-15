@@ -24,7 +24,7 @@ class Card extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws \Illuminate\Http\Client\RequestException
      */
     public function delete(string $token, array $user): Response
     {
@@ -62,7 +62,7 @@ class Card extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws \Illuminate\Http\Client\RequestException
      */
     public function getList(string|int $uid): Response
     {

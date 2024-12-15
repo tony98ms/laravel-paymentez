@@ -24,7 +24,7 @@ class Cash extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws  \Illuminate\Http\Client\RequestException
      */
     public function generateOrder(
         array $carrier,

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static \Blubear\LaravelPaymentez\Response\Response getList(string|int $uid)
- * @method static \stdClass delete(string $token, array $user)
+ * @method static \Blubear\LaravelPaymentez\Response\Response delete(string $token, array $user)
  *
  * @see \Paymentez\Resources\Card
  *

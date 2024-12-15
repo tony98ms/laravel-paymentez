@@ -2,11 +2,11 @@
 
 namespace Blubear\LaravelPaymentez\Services;
 
-use Illuminate\Support\Facades\Http;
-use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\{Client, RequestOptions};
-use Blubear\LaravelPaymentez\Exceptions\RequestException;
+use Illuminate\Http\Client\Request;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
+use Blubear\LaravelPaymentez\Exceptions\RequestException;
+use Blubear\LaravelPaymentez\Exceptions\ResponseException;
 
 
 class Requestor
@@ -17,7 +17,7 @@ class Requestor
     protected $client;
 
     /**
-     * @var array
+     * @var Request
      */
     protected $request;
 
@@ -28,21 +28,25 @@ class Requestor
 
     /**
      * Requestor constructor.
-     * @param array $apiUri
-     * @param bool $production
+     * @param string $baseUrl
      * @param string $authToken
      * @throws RequestException
      */
-    public function __construct(string $baseUrl, bool $production)
+    public function __construct(string $baseUrl)
     {
         $this->client = Http::withoutVerifying()
+            ->baseUrl($baseUrl)
+            ->beforeSending(function (Request $request,  $options) {
+                $this->request = $request;
+            })
             ->acceptJson()
             ->contentType('application/json')
             ->withHeaders(self::mergeHeaders([
                 'Auth-Token' => Autentication::token() // Generate new token for each request
             ]))
-            ->baseUrl($baseUrl)
-            ->throw()
+            ->throw(function (Response $response, \Illuminate\Http\Client\RequestException $e) {
+                ResponseException::launch($e,  $this->request);
+            })
             ->timeout(config('paymentez.default_seconds_timeout'));
     }
 

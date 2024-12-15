@@ -32,7 +32,7 @@ class Charge extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws  \Illuminate\Http\Client\RequestException
      */
     public function create(string $token, array $order, array $user): Response
     {
@@ -77,7 +77,7 @@ class Charge extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws  \Illuminate\Http\Client\RequestException
      */
     public function authorize(
         string $token,
@@ -124,7 +124,7 @@ class Charge extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws  \Illuminate\Http\Client\RequestException
      */
     public function capture(string $transactionId, float $amount = null): Response
     {
@@ -176,7 +176,7 @@ class Charge extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws  \Illuminate\Http\Client\RequestException
      */
     public function verify(
         string $type,
@@ -228,7 +228,7 @@ class Charge extends Resource
      * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Paymentez\Exceptions\RequestException
+     * @throws  \Illuminate\Http\Client\RequestException
      */
     public function refund(string $transactionId, float $amount = null, bool $more_info = null): Response
     {
