@@ -2,7 +2,7 @@
 
 namespace Blubear\LaravelPaymentez\Exceptions;
 
-use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\Client\RequestException;
 
 
 class ResponseException

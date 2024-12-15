@@ -2,8 +2,9 @@
 
 namespace Blubear\LaravelPaymentez\Resources;
 
-use stdClass;
-use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\Client\RequestException;
+use Blubear\LaravelPaymentez\Response\Response;
+use Blubear\LaravelPaymentez\Resources\Resource;
 use Blubear\LaravelPaymentez\Exceptions\ResponseException;
 use Blubear\LaravelPaymentez\Exceptions\PaymentezErrorException;
 
@@ -20,7 +21,7 @@ class Cash extends Resource
      * @param array $carrier
      * @param array $user
      * @param array $order
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
@@ -29,7 +30,7 @@ class Cash extends Resource
         array $carrier,
         array $user,
         array $order
-    ): stdClass {
+    ): Response {
         $this->getRequestor()->validateRequestParams([
             'id' => 'string'
         ], $carrier);
@@ -62,8 +63,8 @@ class Cash extends Resource
             ResponseException::launch($clientException);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 

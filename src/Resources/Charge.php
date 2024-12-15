@@ -2,8 +2,9 @@
 
 namespace Blubear\LaravelPaymentez\Resources;
 
-use stdClass;
-use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\Client\RequestException;
+use Blubear\LaravelPaymentez\Response\Response;
+use Blubear\LaravelPaymentez\Resources\Resource;
 use Blubear\LaravelPaymentez\Exceptions\ResponseException;
 use Blubear\LaravelPaymentez\Exceptions\PaymentezErrorException;
 
@@ -28,12 +29,12 @@ class Charge extends Resource
      * @param string $token
      * @param array $order
      * @param array $user
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
      */
-    public function create(string $token, array $order, array $user): stdClass
+    public function create(string $token, array $order, array $user): Response
     {
         $card = [
             'token' => $token
@@ -61,8 +62,8 @@ class Charge extends Resource
             ResponseException::launch($requestException);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 
@@ -73,7 +74,7 @@ class Charge extends Resource
      * @param string $token
      * @param array $order
      * @param array $user
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
@@ -82,7 +83,7 @@ class Charge extends Resource
         string $token,
         array $order,
         array $user
-    ): stdClass {
+    ): Response {
         $card = [
             'token' => $token
         ];
@@ -109,8 +110,8 @@ class Charge extends Resource
             ResponseException::launch($requestException);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 
@@ -120,12 +121,12 @@ class Charge extends Resource
     /**
      * @param string $transactionId
      * @param float|null $amount
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
      */
-    public function capture(string $transactionId, float $amount = null): stdClass
+    public function capture(string $transactionId, float $amount = null): Response
     {
         $transaction = [
             'id' => (empty($transactionId) ? null : $transactionId)
@@ -159,8 +160,8 @@ class Charge extends Resource
             ResponseException::launch($requestException);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 
@@ -172,7 +173,7 @@ class Charge extends Resource
      * @param string $value
      * @param string $transactionId
      * @param array $user
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
@@ -183,7 +184,7 @@ class Charge extends Resource
         string $transactionId,
         array $user,
         bool $more_info = null
-    ): stdClass {
+    ): Response {
         $transaction = [
             'id' => (empty($transactionId) ? null : $transactionId)
         ];
@@ -213,8 +214,8 @@ class Charge extends Resource
             ResponseException::launch($requestException);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 
@@ -224,12 +225,12 @@ class Charge extends Resource
     /**
      * @param string $transactionId
      * @param float|null $amount
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
      */
-    public function refund(string $transactionId, float $amount = null, bool $more_info = null): stdClass
+    public function refund(string $transactionId, float $amount = null, bool $more_info = null): Response
     {
         $transaction = [
             'id' => (empty($transactionId) ? null : $transactionId)
@@ -264,8 +265,8 @@ class Charge extends Resource
             ResponseException::launch($requestException);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 

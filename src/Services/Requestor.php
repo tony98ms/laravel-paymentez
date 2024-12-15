@@ -2,15 +2,17 @@
 
 namespace Blubear\LaravelPaymentez\Services;
 
+use Illuminate\Support\Facades\Http;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\{Client, RequestOptions};
 use Blubear\LaravelPaymentez\Exceptions\RequestException;
+use Illuminate\Http\Client\Response;
 
 
 class Requestor
 {
     /**
-     * @var GuzzleHttp\Client
+     * @var Http
      */
     protected $client;
 
@@ -24,7 +26,6 @@ class Requestor
      */
     protected $response;
 
-
     /**
      * Requestor constructor.
      * @param array $apiUri
@@ -32,36 +33,42 @@ class Requestor
      * @param string $authToken
      * @throws RequestException
      */
-    public function __construct(string $apiUris, bool $production)
+    public function __construct(string $baseUrl, bool $production)
     {
-        $this->client = new Client([
-            // Set the base paymentez uri
-            'base_uri' => $apiUris,
-            'timeout' => config('paymentez.default_seconds_timeout')
-        ]);
+        $this->client = Http::withoutVerifying()
+            ->acceptJson()
+            ->contentType('application/json')
+            ->withHeaders(self::mergeHeaders([
+                'Auth-Token' => Autentication::token() // Generate new token for each request
+            ]))
+            ->baseUrl($baseUrl)
+            ->throw()
+            ->timeout(config('paymentez.default_seconds_timeout'));
     }
 
     /**
      * @param string $resource
      * @param array $body
      * @param array $headers
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return mixed|\Illuminate\Http\Client\Response
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function post(
-        string $resource,
+        string $url,
         array $body,
         array $headers = [],
         bool $hasVersion = true
-    ): ResponseInterface {
-        return $this->make(
-            'POST',
-            $resource,
-            $body,
-            $headers,
-            [],
-            $hasVersion
-        );
+    ): Response {
+        $resourcePath = [
+            config('paymentez.api_version'),
+            $url
+        ];
+        if (!$hasVersion) {
+            array_shift($resourcePath);
+        }
+        $response = $this->client
+            ->post(implode('/', $resourcePath), $body);
+        return $response;
     }
 
     /**
@@ -72,59 +79,25 @@ class Requestor
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function get(
-        string $resource,
+        string $url,
         array $query,
         array $headers = [],
         bool $hasVersion = true
-    ): ResponseInterface {
-        return $this->make(
-            'GET',
-            $resource,
-            [],
-            $headers,
-            $query,
-            $hasVersion
-        );
-    }
-
-    /**
-     * Make a request with Guzzle
-     * @param string $type
-     * @param string $resource
-     * @param array $body
-     * @param array $headers
-     * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function make(
-        string $type,
-        string $resource,
-        array $body,
-        array $headers,
-        array $query = [],
-        bool $hasVersion = true
-    ): ResponseInterface {
-        $mergedHeaders = self::mergeHeaders(array_merge($headers, [
-            'Auth-Token' => Autentication::token() // Generate new token for each request
-        ]));
-
+    ): Response {
         $resourcePath = [
             config('paymentez.api_version'),
-            $resource
+            $url
         ];
-
         if (!$hasVersion) {
             array_shift($resourcePath);
         }
-
-        return $this->client->request($type, implode('/', $resourcePath), [
-            RequestOptions::HEADERS => $mergedHeaders,
-            RequestOptions::JSON => $body,
-            RequestOptions::QUERY => $query,
-            // RequestOptions::DEBUG => true
-        ]);
+        $response = $this->client
+            ->get(
+                implode('/', $resourcePath),
+                $query
+            );
+        return $response;
     }
-
     /**
      * @param array $schema
      * @param array $params

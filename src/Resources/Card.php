@@ -2,12 +2,11 @@
 
 namespace Blubear\LaravelPaymentez\Resources;
 
-use stdClass;
-use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\Client\RequestException;
+use Blubear\LaravelPaymentez\Response\Response;
 use Blubear\LaravelPaymentez\Resources\Resource;
 use Blubear\LaravelPaymentez\Exceptions\ResponseException;
 use Blubear\LaravelPaymentez\Exceptions\PaymentezErrorException;
-
 
 class Card extends Resource
 {
@@ -22,12 +21,12 @@ class Card extends Resource
     /**
      * @param string $token
      * @param array $user
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
      */
-    public function delete(string $token, array $user): stdClass
+    public function delete(string $token, array $user): Response
     {
         $card = [
             'token' => $token
@@ -50,8 +49,8 @@ class Card extends Resource
             ResponseException::launch($exception);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 
@@ -60,12 +59,12 @@ class Card extends Resource
 
     /**
      * @param $uid
-     * @return stdClass
+     * @return Response
      * @throws PaymentezErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Paymentez\Exceptions\RequestException
      */
-    public function getList(string|int $uid): stdClass
+    public function getList(string|int $uid): Response
     {
         $params = ['uid' => (string)$uid];
         $this->getRequestor()->validateRequestParams([
@@ -74,12 +73,12 @@ class Card extends Resource
 
         try {
             $response = $this->getRequestor()->get(self::ENDPOINTS[self::LIST_ENDPOINT], $params);
-        } catch (RequestException $clientException) {
+        } catch (RequestException  $clientException) {
             ResponseException::launch($clientException);
         }
 
-        if ($response->getStatusCode() == 200) {
-            $this->setData(json_decode($response->getBody()));
+        if ($response->ok()) {
+            $this->setData($response);
             return $this->getData();
         }
 

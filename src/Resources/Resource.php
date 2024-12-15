@@ -2,6 +2,7 @@
 
 namespace Blubear\LaravelPaymentez\Resources;
 
+use Blubear\LaravelPaymentez\Response\Response;
 use Blubear\LaravelPaymentez\Services\Requestor;
 use Blubear\LaravelPaymentez\Exceptions\ResourceException;
 
@@ -42,20 +43,19 @@ abstract class Resource
     }
 
     /**
-     * @param \stdClass $data
+     * @param \Illuminate\Http\Client\Response $response
      * @return Resource
      */
-    protected function setData(\stdClass $data): self
+    protected function setData(\Illuminate\Http\Client\Response $response): self
     {
-        $this->data = $data;
-
+        $this->data = Response::make($response);
         return $this;
     }
 
     /**
-     * @return \stdClass
+     * @return Response
      */
-    public function getData(): \stdClass
+    public function getData(): Response
     {
         return $this->data;
     }
