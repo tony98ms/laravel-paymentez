@@ -7,6 +7,7 @@ enum StatusTransaction: string
     case SUCCESS = 'success';
     case FAILURE = 'failure';
     case PENDING = 'pending';
+    case REFUND = 'refund';
 
     /**
      * Get the label for the given status value.
@@ -31,6 +32,7 @@ enum StatusTransaction: string
             self::PENDING => 'Pendiente',
             self::SUCCESS => 'Exitoso',
             self::FAILURE => 'Fallido',
+            self::REFUND => 'Reembolso',
         };
     }
     /**
@@ -45,6 +47,7 @@ enum StatusTransaction: string
             'pending' => self::PENDING,
             'success' => self::SUCCESS,
             'failure' => self::FAILURE,
+            'refund' => self::REFUND,
         };
     }
 }
