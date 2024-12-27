@@ -1,9 +1,9 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Services;
+namespace TonyStore\LaravelPaymentez\Services;
 
 use DateTime;
-use Blubear\LaravelPaymentez\Exceptions\RequestException;
+use TonyStore\LaravelPaymentez\Exceptions\RequestException;
 
 class Autentication
 {

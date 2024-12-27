@@ -77,15 +77,15 @@ return [
     */
     'api_resources' => [
         'card' => [
-            'class' => \Blubear\LaravelPaymentez\Resources\Card::class,
+            'class' => \TonyStore\LaravelPaymentez\Resources\Card::class,
             'api' => 'ccapi'
         ],
         'cash' => [
-            'class' => \Blubear\LaravelPaymentez\Resources\Cash::class,
+            'class' => \TonyStore\LaravelPaymentez\Resources\Cash::class,
             'api' => 'noccapi'
         ],
         'charge' => [
-            'class' => \Blubear\LaravelPaymentez\Resources\Charge::class,
+            'class' => \TonyStore\LaravelPaymentez\Resources\Charge::class,
             'api' => 'ccapi'
         ]
     ],

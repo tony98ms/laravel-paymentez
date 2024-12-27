@@ -1,6 +1,6 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Enums;
+namespace TonyStore\LaravelPaymentez\Enums;
 
 enum StatusDetail: int
 {

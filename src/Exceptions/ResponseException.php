@@ -1,10 +1,10 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Exceptions;
+namespace TonyStore\LaravelPaymentez\Exceptions;
 
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\Client\RequestException;
-use Blubear\LaravelPaymentez\Events\PaymentezErrorEvent;
+use TonyStore\LaravelPaymentez\Events\PaymentezErrorEvent;
 
 class ResponseException
 {

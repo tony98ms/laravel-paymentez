@@ -1,10 +1,10 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Resources;
+namespace TonyStore\LaravelPaymentez\Resources;
 
-use Blubear\LaravelPaymentez\Response\Response;
-use Blubear\LaravelPaymentez\Services\Requestor;
-use Blubear\LaravelPaymentez\Exceptions\ResourceException;
+use TonyStore\LaravelPaymentez\Response\Response;
+use TonyStore\LaravelPaymentez\Services\Requestor;
+use TonyStore\LaravelPaymentez\Exceptions\ResourceException;
 
 
 abstract class Resource

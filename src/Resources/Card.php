@@ -1,12 +1,12 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Resources;
+namespace TonyStore\LaravelPaymentez\Resources;
 
 use Illuminate\Http\Client\RequestException;
-use Blubear\LaravelPaymentez\Response\Response;
-use Blubear\LaravelPaymentez\Resources\Resource;
-use Blubear\LaravelPaymentez\Exceptions\ResponseException;
-use Blubear\LaravelPaymentez\Exceptions\PaymentezErrorException;
+use TonyStore\LaravelPaymentez\Response\Response;
+use TonyStore\LaravelPaymentez\Resources\Resource;
+use TonyStore\LaravelPaymentez\Exceptions\ResponseException;
+use TonyStore\LaravelPaymentez\Exceptions\PaymentezErrorException;
 
 class Card extends Resource
 {

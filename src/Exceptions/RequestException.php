@@ -1,6 +1,6 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Exceptions;
+namespace TonyStore\LaravelPaymentez\Exceptions;
 
 use Exception;
 

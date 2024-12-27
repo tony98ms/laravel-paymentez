@@ -1,17 +1,17 @@
 {
-    "name": "blubear/laravel-paymentez",
+    "name": "tonystore/laravel-paymentez",
     "description": "Libreria para conexión con pasarela de pagos Paymentez(Nuvei)",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Blubear\\LaravelPaymentez\\": "src/"
+            "TonyStore\\LaravelPaymentez\\": "src/"
         }
     },
     "authors": [
         {
             "name": "Anthony Medina",
-            "email": "tonym@blubear.io",
+            "email": "thony918@outlook.com",
             "homepage": "https://github.com/tony98ms",
             "role": "Developer"
         }
@@ -32,12 +32,12 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Blubear\\LaravelPaymentez\\LaravelPaymentezProvider"
+                "TonyStore\\LaravelPaymentez\\LaravelPaymentezProvider"
             ],
             "aliases": {
-                "PaymentezCard": "Blubear\\LaravelPaymentez\\Facades\\PaymentezCard",
-                "PaymentezCharge": "Blubear\\LaravelPaymentez\\Facades\\PaymentezCharge",
-                "PaymentezCash": "Blubear\\LaravelPaymentez\\Facades\\PaymentezCash"
+                "PaymentezCard": "TonyStore\\LaravelPaymentez\\Facades\\PaymentezCard",
+                "PaymentezCharge": "TonyStore\\LaravelPaymentez\\Facades\\PaymentezCharge",
+                "PaymentezCash": "TonyStore\\LaravelPaymentez\\Facades\\PaymentezCash"
             }
         }
     }

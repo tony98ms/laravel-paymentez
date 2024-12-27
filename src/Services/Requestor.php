@@ -1,12 +1,12 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Services;
+namespace TonyStore\LaravelPaymentez\Services;
 
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Blubear\LaravelPaymentez\Exceptions\RequestException;
-use Blubear\LaravelPaymentez\Exceptions\ResponseException;
+use TonyStore\LaravelPaymentez\Exceptions\RequestException;
+use TonyStore\LaravelPaymentez\Exceptions\ResponseException;
 
 
 class Requestor

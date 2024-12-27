@@ -1,11 +1,11 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Facades;
+namespace TonyStore\LaravelPaymentez\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \Blubear\LaravelPaymentez\Response\Response generateOrder(array $carrier, array $user, array $order)
+ * @method static \TonyStore\LaravelPaymentez\Response\Response generateOrder(array $carrier, array $user, array $order)
  * @see \Paymentez\Resources\Cash
  *
  */

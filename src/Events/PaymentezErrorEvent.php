@@ -1,6 +1,6 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Events;
+namespace TonyStore\LaravelPaymentez\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Blubear\LaravelPaymentez\Response;
+namespace TonyStore\LaravelPaymentez\Response;
 
 use Illuminate\Http\Client\Response as ClientResponse;
 

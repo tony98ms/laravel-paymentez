@@ -1,9 +1,9 @@
 <?php
 
-namespace Blubear\LaravelPaymentez;
+namespace TonyStore\LaravelPaymentez;
 
 use Illuminate\Support\ServiceProvider;
-use Blubear\LaravelPaymentez\Services\Requestor;
+use TonyStore\LaravelPaymentez\Services\Requestor;
 
 class LaravelPaymentezProvider extends ServiceProvider
 {
