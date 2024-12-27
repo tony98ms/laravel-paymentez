@@ -1,5 +1,5 @@
 # Laravel Paymentez Library
-[![Latest Stable Version](https://img.shields.io/packagist/v/blubear/laravel-paymentez)](https://packagist.org/packages/blubear/laravel-paymentez) 
+[![Latest Stable Version](https://img.shields.io/packagist/v/blubear/laravel-paymentez?include_prereleases&label=version&color=%23assds)](https://packagist.org/packages/blubear/laravel-paymentez) 
 [![Packagist Downloads](https://img.shields.io/packagist/dt/blubear/laravel-paymentez)](https://packagist.org/packages/blubear/laravel-paymentez)
 [![License](https://img.shields.io/packagist/l/blubear/laravel-paymentez)](https://packagist.org/packages/blubear/laravel-paymentez) 
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/blubear/laravel-paymentez/php)](https://packagist.org/packages/tonystore/livewire-permission)
