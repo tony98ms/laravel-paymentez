@@ -1,4 +1,8 @@
 # Laravel Paymentez Library
+[![Latest Stable Version](https://img.shields.io/packagist/v/blubear/laravel-paymentez)](https://packagist.org/packages/blubear/laravel-paymentez) 
+[![Packagist Downloads](https://img.shields.io/packagist/dt/blubear/laravel-paymentez)](https://packagist.org/packages/blubear/laravel-paymentez)
+[![License](https://img.shields.io/packagist/l/blubear/laravel-paymentez)](https://packagist.org/packages/blubear/laravel-paymentez) 
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/blubear/laravel-paymentez/php)](https://packagist.org/packages/tonystore/livewire-permission)
 
 Esta librería de Laravel permite integrarse fácilmente con las APIs de [Paymentez](https://paymentez.com/), proporcionando una forma sencilla de realizar operaciones como pagos, consultas de transacciones, entre otras.
 
