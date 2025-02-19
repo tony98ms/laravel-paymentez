@@ -47,3 +47,63 @@ return [
     ],
 ];
 ```
+
+## Formas de uso
+### Obtener una lista de tarjetas por usuario
+```php 
+<?php 
+use TonyStore\LaravelPaymentez\Facades\PaymentezCard;
+
+
+$uid = '23';
+$cards = PaymentezCard::getList($uid);
+
+```
+
+### Eliminar una tarjeta con token
+```php 
+<?php 
+use TonyStore\LaravelPaymentez\Facades\PaymentezCard;
+
+
+$uid = '23';
+$token = '785896526632'
+PaymentezCard::delete($token, ["id" => (string)$uid]);
+
+```
+ ### Crear nuevo cargo con token
+```php 
+<?php 
+use TonyStore\LaravelPaymentez\Facades\PaymentezCard;
+
+
+$cardToken = "myAwesomeTokenCard";
+
+$userDetails = [
+    'id' => "23", 
+    'email' => "jhondoe@gmail.com" 
+];
+
+$orderDetails = [
+    'amount' => 100.00, 
+    'description' => "XXXXXX",
+    'dev_reference' => "XXXXXX", 
+    'vat' => 0.00 
+];
+
+$created = PaymentezCharge::create($cardToken, $orderDetails, $userDetails);
+
+$object = $created->toObject(); //Obtener la respuesta en formato objeto simple
+$collection = $created->toCollection(); //Obtener la respuesta en una colección
+$array = $created->toArray(); //Obtener la respuesta en un arreglo
+$response = $created->toResponse(); // Obtener instancia de Response
+
+// Obtener información de la respuesta
+
+// Estado
+$status = $object->transaction->status;
+
+// Id de la transacción
+$transactionId = $object->transaction->id;
+```
+ 
