@@ -47,6 +47,12 @@ return [
     ],
 ];
 ```
+### Recursos disponibles:
+
+- `PaymentezCard`:
+ _getList_, _delete_
+- `PaymentezCharge`:
+ create, authorize, capture, verify, refund
 
 ## Formas de uso
 ### Obtener una lista de tarjetas por usuario
