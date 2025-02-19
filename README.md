@@ -52,7 +52,7 @@ return [
 - `PaymentezCard`:
  _getList_, _delete_
 - `PaymentezCharge`:
- create, authorize, capture, verify, refund
+ create, _authorize_, _capture_, _verify_, _refund_
 
 ## Formas de uso
 ### Obtener una lista de tarjetas por usuario
